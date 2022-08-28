@@ -13,6 +13,9 @@ function openTab(evt, tabname) {
     if (tabname === 'ViewItems') {
         listItems();
     }
+    if(tabname === 'Schedule'){
+        listScheduleItems()
+    }
 }
 
 // Get the element with id="defaultOpen" and click on it

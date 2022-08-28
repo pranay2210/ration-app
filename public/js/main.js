@@ -65,3 +65,28 @@ function delItem(obj) {
         }
     });
 }
+
+function listScheduleItems() {
+    $.ajax({
+        url: '/item/schedule',
+        type: 'GET',
+        success: function (response) {
+            let tableHtml = "";
+            for (let i = 0; i < response.length; i++) {
+                let item = response[i];
+                let expiryDate = new Date(item.expiryDate);
+                tableHtml += `  <tr>
+                                    <th scope="row">${i}</th>
+                                    <td>${item.packetId}</td>
+                                    <td>${item.packetType}</td>
+                                    <td>${item.content}</td>
+                                    <td>${item.calories}</td>
+                                    <td>${item.qty}</td>
+                                    <td>${expiryDate.toLocaleDateString("en-US")}</td>
+                                </tr>`;
+            }
+            document.getElementById('scheduleitems').innerHTML = "";
+            document.getElementById('scheduleitems').innerHTML = tableHtml;
+        }
+    });
+}

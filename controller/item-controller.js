@@ -33,8 +33,16 @@ let deleteItems = async(req,res)=>{
     
 };
 
+let getScheduleItems = (req, res, next) => {
+    ItemModel.find({}).then((result) => {
+        console.log("Result", result)
+        res.send(result)
+    });
+};
+
 module.exports = {
     addItem,
     getItems,
-    deleteItems
+    deleteItems,
+    getScheduleItems
 }
