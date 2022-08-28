@@ -26,6 +26,9 @@ let deleteItems = async(req,res)=>{
     let packetId = req.body.packetId;
     await ItemModel.deleteOne({ packetId: packetId }).then((result)=>{
         console.log(result);
+        if(result.deletedCount === 1) {
+            res.send(result);
+        }
     });
     
 };
