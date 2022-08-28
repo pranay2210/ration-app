@@ -24,7 +24,10 @@ let getItems = (req, res, next) => {
 
 let deleteItems = async(req,res)=>{
     let packetId = req.body.packetId;
-    ItemModel.deleteOne({ packetId: packetId });
+    await ItemModel.deleteOne({ packetId: packetId }).then((result)=>{
+        console.log(result);
+    });
+    
 };
 
 module.exports = {
